@@ -17,7 +17,7 @@ RSpec.configure do |config|
   # you configure your source control system to ignore this file.
   # config.example_status_persistence_file_path = "spec/examples.txt"
 
-  config.disable_monkey_patching!
+  # config.disable_monkey_patching!
 
   if config.files_to_run.one?
     config.default_formatter = "doc"
