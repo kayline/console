@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 import React from 'react';
+import CardTemplate from './CardTemplate';
 
 export default class CardTemplateList extends React.Component {
   static propTypes = {
@@ -9,9 +10,11 @@ export default class CardTemplateList extends React.Component {
   render() {
     return (
       <div>
-        { this.props.templates.map(function(template) {
-          return <h3 key={template.id}>{template.greeting}</h3>
-        })}
+        <ul className="list-inline list-unstyled">
+          { this.props.templates.map(function(template) {
+            return <CardTemplate key={template.id} greeting={template.greeting} />
+          })}
+        </ul>
       </div>
     );
   }
