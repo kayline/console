@@ -11,8 +11,10 @@ export default class CardTemplate extends React.Component {
     return (
       <div>
         <li> 
-          {this.props.greeting} 
-          <a href={"/card_templates/" + this.props.id + "/cards/new"}> Send </a>
+          <div>
+            {this.props.greeting} 
+          </div>
+          <a className="btn btn-default" href={"/card_templates/" + this.props.id + "/cards/new"}> Use This Greeting </a>
         </li>
       </div>
     );
