@@ -9,14 +9,31 @@ export default class CardOrderConfirmation extends React.Component {
 
   render() {
     return (
-      <dl className="pl">
-        <dt>Selected Greeting:</dt>
-        <dd>{this.props.greeting}</dd>
-        <dt>Custom Message:</dt>
-        <dd>{this.props.card.custom_message}</dd>
-        <dt>Signature:</dt>
-        <dd>{this.props.card.signature}</dd>
-      </dl>
+      <div>
+        <dl className="pl">
+          <dt>Selected Greeting:</dt>
+          <dd>{this.props.greeting}</dd>
+          <dt>Custom Message:</dt>
+          <dd>{this.props.card.custom_message}</dd>
+          <dt>Signature:</dt>
+          <dd>{this.props.card.signature}</dd>
+        </dl>
+
+        <h3>We Will Send This Card To:</h3>
+
+        <dl className="pl">
+          <dt>Name:</dt>
+          <dd>{this.props.card.recipient_name}</dd>
+          <dt>Street Address:</dt>
+          <dd>{this.props.card.street_address}</dd>
+          <dt>City:</dt>
+          <dd>{this.props.card.city}</dd>
+          <dt>State:</dt>
+          <dd>{this.props.card.state}</dd>
+          <dt>Zip Code:</dt>
+          <dd>{this.props.card.zip_code}</dd>
+        </dl>
+      </div>
     );
   }
 }
