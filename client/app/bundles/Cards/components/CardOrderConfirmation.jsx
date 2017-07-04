@@ -9,12 +9,14 @@ export default class CardOrderConfirmation extends React.Component {
 
   render() {
     return (
-      <div>
-        <div>Selected Greeting:</div>
-        <div>{this.props.greeting}</div>
-        <div>Custom Message:</div>
-        <div>{this.props.card.custom_message}</div>
-      </div>
+      <dl className="pl">
+        <dt>Selected Greeting:</dt>
+        <dd>{this.props.greeting}</dd>
+        <dt>Custom Message:</dt>
+        <dd>{this.props.card.custom_message}</dd>
+        <dt>Signature:</dt>
+        <dd>{this.props.card.signature}</dd>
+      </dl>
     );
   }
 }

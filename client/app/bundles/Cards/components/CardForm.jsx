@@ -22,6 +22,11 @@ export default class CardForm extends React.Component {
             <input className="form-control" id="custom_message" name="custom_message" type="text"></input>
           </div>
 
+          <div className="form-group">
+            <label htmlFor="signature">Signature</label>
+            <input className="form-control" id="signature" name="signature" type="text"></input>
+          </div>
+
           <input className="btn btn-default" type="submit" value="Send Card"></input>
         </form>
       </div>

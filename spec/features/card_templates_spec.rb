@@ -24,10 +24,12 @@ describe 'Card templates', js: true do
 			expect(page).to have_content 'So Sorry'
 
 			fill_in 'Custom Message', with: 'Not having the sorry'
+			fill_in 'Signature', with: 'Kindly, James'
 			click_on 'Send Card'
 			expect(page).to have_content 'Your card has been ordered'
 			expect(page).to have_content 'So Sorry'
 			expect(page).to have_content 'Not having the sorry'
+			expect(page).to have_content 'Kindly, James'
 		end
 	end
 

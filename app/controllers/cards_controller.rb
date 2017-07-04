@@ -8,7 +8,8 @@ class CardsController < ApplicationController
 	def create
 		@card = Card.create!(
 			card_template_id: params[:card_template_id], 
-			custom_message: params[:custom_message]
+			custom_message: params[:custom_message],
+			signature: params[:signature]
 		)
 		@greeting = CardTemplate.find(params[:card_template_id]).greeting
 	end
