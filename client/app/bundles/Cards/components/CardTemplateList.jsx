@@ -10,7 +10,7 @@ export default class CardTemplateList extends React.Component {
   render() {
     return (
       <div>
-        <ul className="list-inline list-unstyled">
+        <ul className="list-inline list-unstyled pm">
           { this.props.templates.map(function(template) {
             return <CardTemplate key={template.id} greeting={template.greeting} />
           })}
