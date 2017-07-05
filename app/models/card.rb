@@ -1,6 +1,6 @@
 class Card < ActiveRecord::Base
-	valdiates :custom_message, length: { maximum: 250 }
-	valdiates :signature, length: { maximum: 100 }
+	validates :custom_message, length: { maximum: 250 }
+	validates :signature, length: { maximum: 100 }
 
 	validates_presence_of :recipient_name
 	validates_presence_of :street_address
