@@ -5,6 +5,7 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
+gem 'bootstrap-sass', '~> 3.3.6'
 
 gem 'rails', '~> 5.1.1'
 gem 'pg', '~> 0.18'
@@ -17,7 +18,7 @@ gem 'react_on_rails', '8.0.0'
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'capybara', '~> 2.13'
-  gem 'selenium-webdriver'
+  gem 'selenium-webdriver', '2.53.4'
   gem 'rspec-rails', '~> 3.5'
 end
 
