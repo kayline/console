@@ -18,4 +18,9 @@ class CardsController < ApplicationController
 		)
 		@greeting = CardTemplate.find(params[:card_template_id]).greeting
 	end
+
+	def show
+		@card = Card.find(params[:id])
+		@greeting = @card.card_template.greeting
+	end
 end

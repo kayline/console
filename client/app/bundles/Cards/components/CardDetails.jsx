@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 
-export default class CardOrderConfirmation extends React.Component {
+export default class CardDetails extends React.Component {
   static propTypes = {
     card: PropTypes.object.isRequired,
     greeting: PropTypes.string.isRequired
