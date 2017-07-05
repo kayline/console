@@ -22,13 +22,16 @@ describe 'Card templates', js: true do
 		it 'creates a card with all relevant fields' do
 			visit "card_templates/#{card_template.id}/cards/new"
 
-			fill_in 'Custom Message', with: 'Not having the sorry'
-			fill_in 'Signature', with: 'Kindly, James'
-			fill_in 'Recipient Name', with: 'Bad Friend'
-			fill_in 'Street Address', with: '123 Main Street'
-			fill_in 'City', with: 'Oakland'
-			fill_in 'State', with: 'CA'
-			fill_in 'Zip Code', with: '94607'
+			fill_in_card_form(
+				message: 'Not having the sorry',
+				signature: 'Kindly, James',
+				recipient_name: 'Bad Friend',
+				street_address: '123 Main Street',
+				city: 'Oakland',
+				state: 'CA',
+				zip_code: '94607'
+			)
+
 			click_on 'Send Card'
 
 			expect(page).to have_content 'Your card has been ordered'
@@ -42,5 +45,34 @@ describe 'Card templates', js: true do
 			expect(page).to have_content 'CA'
 			expect(page).to have_content '94607'
 		end
+
+		it 'displays an error message if recipient info is missing' do
+			visit "card_templates/#{card_template.id}/cards/new"
+
+			fill_in_card_form(
+				message: 'Not having the sorry',
+				signature: 'Kindly, James',
+				recipient_name: nil,
+				street_address: '123 Main Street',
+				city: 'Oakland',
+				state: 'CA',
+				zip_code: '94607'
+			)
+
+			click_on 'Send Card'
+			expect(page).to have_no_content 'Your card has been ordered'
+			validation_message = page.find("#recipient_name").native.attribute("validationMessage")
+			expect(validation_message).to eq "Please fill out this field."
+		end
+	end
+
+	def fill_in_card_form(message:, signature:, recipient_name:, street_address:, city:, state:, zip_code:)
+		fill_in 'Custom Message', with: message
+		fill_in 'Signature', with: signature
+		fill_in 'Recipient Name', with: recipient_name
+		fill_in 'Street Address', with: street_address
+		fill_in 'City', with: city
+		fill_in 'State', with: state
+		fill_in 'Zip Code', with: zip_code
 	end
 end
