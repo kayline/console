@@ -19,7 +19,7 @@ export default class CardDetails extends React.Component {
           <dd>{this.props.card.signature}</dd>
         </dl>
 
-        <h3>We Will Send This Card To:</h3>
+        <h3 className="pl">We Will Send This Card To:</h3>
 
         <dl className="pl">
           <dt>Name:</dt>
