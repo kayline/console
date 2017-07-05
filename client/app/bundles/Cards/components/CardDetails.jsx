@@ -10,7 +10,7 @@ export default class CardDetails extends React.Component {
   render() {
     return (
       <div>
-        <dl className="pl">
+        <dl className="pll">
           <dt>Selected Greeting:</dt>
           <dd>{this.props.greeting}</dd>
           <dt>Custom Message:</dt>
@@ -19,9 +19,9 @@ export default class CardDetails extends React.Component {
           <dd>{this.props.card.signature}</dd>
         </dl>
 
-        <h3 className="pl">We Will Send This Card To:</h3>
+        <h3 className="pll">We Will Send This Card To:</h3>
 
-        <dl className="pl">
+        <dl className="pll">
           <dt>Name:</dt>
           <dd>{this.props.card.recipient_name}</dd>
           <dt>Street Address:</dt>

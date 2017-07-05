@@ -10,7 +10,7 @@ export default class CardForm extends React.Component {
   render() {
     return (
       <div>
-        <form className="pl" action={"/card_templates/" + this.props.template.id +"/cards"} method="post">
+        <form className="pll pts" action={"/card_templates/" + this.props.template.id +"/cards"} method="post">
           <input type='hidden' name='authenticity_token' value={this.props.auth_token} />
           <div className="form-group">
             <label>Selected Greeting</label>

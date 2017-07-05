@@ -9,7 +9,7 @@ export default class PageTitle extends React.Component {
 
   render() {
     return (
-      <h1 className="pm">{this.props.title}</h1>
+      <h1 className="plm">{this.props.title}</h1>
     );
   }
 }
