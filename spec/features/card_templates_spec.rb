@@ -59,17 +59,11 @@ describe 'Card templates', js: true do
 				zip_code: '94607'
 			)
 
-			p "before click : "
-			p page.find("#recipient_name")
-
 			click_on 'Send Card'
 
-			p "after click : "
-			p page.find("#recipient_name")
-
 			expect(page).to have_no_content 'Your card has been ordered'
-			# validation_message = page.find("#recipient_name").native.attribute("validationMessage")
-			# expect(validation_message).to eq "Please fill out this field."
+			validation_message = page.find("#recipient_name").native.attribute("validationMessage")
+			expect(validation_message).to eq "Please fill out this field."
 		end
 	end
 
