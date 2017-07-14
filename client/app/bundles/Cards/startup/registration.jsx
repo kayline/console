@@ -6,6 +6,7 @@ import CardTemplate from '../components/CardTemplate';
 import CardTemplateList from '../components/CardTemplateList';
 import CardForm from '../components/CardForm';
 import CardDetails from '../components/CardDetails';
+import CardList from '../components/CardList';
 
 ReactOnRails.register({
 	Header,
@@ -13,5 +14,6 @@ ReactOnRails.register({
   CardTemplate,
   CardTemplateList,
   CardForm,
-  CardDetails
+  CardDetails,
+  CardList
 });
