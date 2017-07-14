@@ -5,4 +5,6 @@ Rails.application.routes.draw do
 		resources :cards, only: [:new, :create, :show]
 	end
 
+  get '/admin', to: 'admin#index'
+
 end
