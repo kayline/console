@@ -37,6 +37,12 @@ describe 'Orders admin', js: true do
       expect(page).to have_css '.card-list'
     end
 
+    it 'displays the ordered card ids' do
+      visit '/admin'
+
+      expect(page).to have_content "#{first_card.id}"
+    end
+
   end
 
 end

@@ -3,6 +3,7 @@ class AdminController < ApplicationController
 
   def index
     @templates = CardTemplate.all
+    @cards = Card.all
   end
 
 end
