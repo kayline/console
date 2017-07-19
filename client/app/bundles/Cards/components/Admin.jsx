@@ -8,12 +8,21 @@ export default class Admin extends React.Component {
     cards: PropTypes.array.isRequired
   };
 
+  constructor(props) {
+    super(props);
+    this.state = { selected_card: this.props.cards[0] }
+  };
+
   render() {
     return (
       <div>
         <h3> Admin </h3>
-        <CardList templates={this.props.templates} cards={this.props.cards} />
+        <CardList
+          templates = {this.props.templates}
+          cards = {this.props.cards}
+          selected_card_id = {this.state.selected_card.id}
+        />
       </div>
     );
-  }
+  };
 }

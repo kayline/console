@@ -4,11 +4,13 @@ import React from 'react';
 export default class CardList extends React.Component {
   static propTypes = {
     templates: PropTypes.array.isRequired,
-    cards: PropTypes.array.isRequired
+    cards: PropTypes.array.isRequired,
+    selected_card_id: PropTypes.number
   };
 
   render() {
     var that = this;
+    console.log(this.props.selected_card_id)
     return (
       <div>
         <ul className="list-unstyled pm card-list">
