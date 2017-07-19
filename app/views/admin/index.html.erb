@@ -1,9 +1,3 @@
-<h3> Admin </h3>
-
-<% @cards.each do |card| %>
-  <p> <% card.id %> </p>
-<% end %>
-
-<%= react_component('CardList', props: {templates: @templates, cards: @cards}) %>
+<%= react_component('Admin', props: {templates: @templates, cards: @cards}) %>
 
 
