@@ -20,7 +20,20 @@ export default class CardList extends React.Component {
                   <ul>
                     {that.props.cards.map(function(card) {
                       if (template.id == card.card_template_id) {
-                        return <li key={card.id}> {card.id} - {card.custom_message} </li>
+                        var selection_state;
+                        if (card.id == that.props.selected_card_id) {
+                          selection_state = "selected";
+                        } else {
+                          selection_state = "not-selected";
+                        }
+                        return (
+                          <li key={card.id}
+                            className={"card-summary " + selection_state}
+                            id={"card-summary-" + card.id}
+                          >
+                            {card.id} - {card.custom_message}
+                          </li>
+                        )
                       }
                     })}
                   </ul>
