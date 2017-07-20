@@ -15,7 +15,7 @@ export default class Admin extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className="container">
         <h3> Admin </h3>
         <CardList
           templates = {this.props.templates}

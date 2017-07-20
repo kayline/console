@@ -13,22 +13,22 @@ export default class CardList extends React.Component {
     console.log(this.props.selected_card_id)
     return (
       <div>
-        <ul className="list-unstyled pm card-list">
+        <ul className="list-group pm card-list">
           {this.props.templates.map( function(template) {
             return (
-                <li key={template.id}> {template.greeting}
-                  <ul>
+                <li className="list-group-item" key={template.id}> {template.greeting}
+                  <ul className="list-group">
                     {that.props.cards.map(function(card) {
                       if (template.id == card.card_template_id) {
                         var selection_state;
                         if (card.id == that.props.selected_card_id) {
-                          selection_state = "selected";
+                          selection_state = "active";
                         } else {
-                          selection_state = "not-selected";
+                          selection_state = "";
                         }
                         return (
                           <li key={card.id}
-                            className={"card-summary " + selection_state}
+                            className={"list-group-item card-summary " + selection_state}
                             id={"card-summary-" + card.id}
                           >
                             {card.id} - {card.custom_message}

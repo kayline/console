@@ -47,8 +47,8 @@ describe 'Orders admin', js: true do
     it 'starts with (only) the first card selected' do
       visit '/admin'
 
-      expect(page).to have_css('.selected#card-summary-' + first_card.id.to_s)
-      expect(page).to have_css('.not-selected#card-summary-' + second_card.id.to_s)
+      expect(page).to have_css('.active#card-summary-' + first_card.id.to_s)
+      expect(page).to_not have_css('.active#card-summary-' + second_card.id.to_s)
     end
 
   end
