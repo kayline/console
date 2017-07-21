@@ -5,12 +5,12 @@ export default class CardList extends React.Component {
   static propTypes = {
     templates: PropTypes.array.isRequired,
     cards: PropTypes.array.isRequired,
-    selected_card_id: PropTypes.number
+    active_card_id: PropTypes.number,
+    change_active_card: PropTypes.func
   };
 
   render() {
     var that = this;
-    console.log(this.props.selected_card_id)
     return (
       <div>
         <ul className="list-group pm card-list">
@@ -20,16 +20,18 @@ export default class CardList extends React.Component {
                   <ul className="list-group">
                     {that.props.cards.map(function(card) {
                       if (template.id == card.card_template_id) {
-                        var selection_state;
-                        if (card.id == that.props.selected_card_id) {
-                          selection_state = "active";
+                        var css_classes
+                        if (card.id == that.props.active_card_id) {
+                          css_classes = "list-group-item card-summary active"
                         } else {
-                          selection_state = "";
+                          css_classes = "list-group-item card-summary"
                         }
                         return (
-                          <li key={card.id}
-                            className={"list-group-item card-summary " + selection_state}
+                          <li
+                            key={card.id}
+                            className={css_classes}
                             id={"card-summary-" + card.id}
+                            onClick={ () => that.props.change_active_card(card.id)}
                           >
                             {card.id} - {card.custom_message}
                           </li>

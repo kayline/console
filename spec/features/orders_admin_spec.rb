@@ -44,11 +44,19 @@ describe 'Orders admin', js: true do
       expect(page).to have_content "#{second_card.id}"
     end
 
-    it 'starts with (only) the first card selected' do
+    it 'starts with (only) the first card active' do
       visit '/admin'
 
       expect(page).to have_css('.active#card-summary-' + first_card.id.to_s)
       expect(page).to_not have_css('.active#card-summary-' + second_card.id.to_s)
+    end
+
+    it 'makes a card active (and only that card) when clicked' do
+      visit '/admin'
+      find_by_id('card-summary-' + second_card.id.to_s).click
+
+      expect(page).to_not have_css('.active#card-summary-' + first_card.id.to_s)
+      expect(page).to have_css('.active#card-summary-' + second_card.id.to_s)
     end
 
   end
