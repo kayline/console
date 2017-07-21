@@ -41,6 +41,45 @@ describe 'Orders admin', js: true do
       visit '/admin'
 
       expect(page).to have_content "#{first_card.id}"
+      expect(page).to have_content "#{second_card.id}"
+    end
+
+    it 'starts with (only) the first card active' do
+      visit '/admin'
+
+      expect(page).to have_css('.active#card-summary-' + first_card.id.to_s)
+      expect(page).to_not have_css('.active#card-summary-' + second_card.id.to_s)
+    end
+
+    it 'makes a card active (and only that card) when clicked' do
+      visit '/admin'
+      find_by_id('card-summary-' + second_card.id.to_s).click
+
+      expect(page).to_not have_css('.active#card-summary-' + first_card.id.to_s)
+      expect(page).to have_css('.active#card-summary-' + second_card.id.to_s)
+    end
+
+  end
+
+  describe 'Card Details' do
+
+    it 'shows the details for the active card' do
+      visit '/admin'
+
+      expect(page).to have_content "#{first_card.signature}"
+      expect(page).to have_content "#{first_card.recipient_name}"
+      expect(page).to have_content "#{first_card.street_address}"
+      expect(page).to have_content "#{first_card.city}"
+      expect(page).to have_content "#{first_card.state}"
+      expect(page).to have_content "#{first_card.zip_code}"
+    end
+
+    it 'changes the details if the active card changes' do
+      visit '/admin'
+      find_by_id('card-summary-' + second_card.id.to_s).click
+
+      expect(page).to_not have_content "#{first_card.signature}"
+      expect(page).to have_content "#{second_card.signature}"
     end
 
   end
