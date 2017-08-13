@@ -84,4 +84,13 @@ describe 'Orders admin', js: true do
 
   end
 
+  describe 'Card Sender' do
+
+    it 'displays a button to mark the active card as sent' do
+      visit '/admin'
+
+      expect(page).to have_button('mark as sent')
+    end
+
+  end
 end

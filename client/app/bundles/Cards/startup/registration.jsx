@@ -8,6 +8,7 @@ import CardForm from '../components/CardForm';
 import CardDetails from '../components/CardDetails';
 import CardList from '../components/CardList';
 import Admin from '../components/Admin';
+import CardSender from '../components/CardSender';
 
 ReactOnRails.register({
 	Header,
@@ -17,5 +18,6 @@ ReactOnRails.register({
   CardForm,
   CardDetails,
   CardList,
-  Admin
+  Admin,
+  CardSender
 });

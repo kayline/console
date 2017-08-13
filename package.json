@@ -2,8 +2,10 @@
   "scripts": {
     "postinstall": "cd client && yarn install"
   },
-
   "name": "console",
   "private": true,
-  "dependencies": {}
+  "dependencies": {
+    "localtunnel": "^1.8.3",
+    "webpack": "^3.5.4"
+  }
 }

@@ -2,6 +2,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import CardList from './CardList';
 import CardDetails from './CardDetails';
+import CardSender from './CardSender';
 
 export default class Admin extends React.Component {
   static propTypes = {
@@ -42,6 +43,7 @@ export default class Admin extends React.Component {
             card = {this.state.active_card}
             greeting = "placeholder greeting"
           />
+          <CardSender card={this.state.active_card} />
         </div>
       </div>
     );
