@@ -9,7 +9,7 @@ export default class CardSender extends React.Component {
   render() {
     return (
       <div>
-        <button type='button' class='btn btn-success'>mark as sent</button>
+        <button type='button' className='btn btn-success'>mark as sent</button>
       </div>
     );
   }
