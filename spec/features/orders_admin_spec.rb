@@ -78,7 +78,7 @@ describe 'Orders admin', js: true do
 
   describe 'Card Sender' do
 
-    xit 'displays a button to toggle the sent status' do
+    it 'displays a button to toggle the sent status' do
       expect(page).to have_button('mark as sent')
       click_button('mark as sent')
       expect(page).to have_button('mark as NOT sent')
@@ -86,7 +86,7 @@ describe 'Orders admin', js: true do
       expct(page).to have_button('mark as sent')
     end
 
-    xit 'remembers the sent status' do
+    it 'remembers the sent status' do
       click_button('mark as sent')
       find_by_id('card-summary-' + second_card.id.to_s).click
       expect(page).to have_button('mark as sent')
