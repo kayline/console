@@ -7,7 +7,8 @@ import CardSender from './CardSender';
 export default class Admin extends React.Component {
   static propTypes = {
     templates: PropTypes.array.isRequired,
-    cards: PropTypes.array.isRequired
+    cards: PropTypes.array.isRequired,
+    auth_token: PropTypes.string.isRequired
   }
 
   constructor(props) {
@@ -27,7 +28,7 @@ export default class Admin extends React.Component {
       that.setState({ active_card: newly_active_card });
     }
   }
-
+    
   render() {
     return (
       <div className="container">
@@ -43,7 +44,7 @@ export default class Admin extends React.Component {
             card = {this.state.active_card}
             greeting = "placeholder greeting"
           />
-          <CardSender card={this.state.active_card} />
+          <CardSender card={this.state.active_card} auth_token={this.props.auth_token} />
         </div>
       </div>
     );

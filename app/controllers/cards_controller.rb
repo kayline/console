@@ -23,4 +23,9 @@ class CardsController < ApplicationController
 		@card = Card.find(params[:id])
 		@greeting = @card.card_template.greeting
 	end
+
+        def update
+          p '******************************************************************************'
+          p 'hit the update route'
+        end
 end
