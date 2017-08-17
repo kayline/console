@@ -1,6 +1,5 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import axios from 'axios'; 
 
 export default class CardSender extends React.Component {
   static propTypes = {
@@ -25,24 +24,7 @@ export default class CardSender extends React.Component {
     };
   }	
 
-  toggleSentStatus() {
-    var url = "/card_templates/" + this.props.card.card_template_id + "/cards/" + this.props.card.id
-    var data = {}
-    var options = {}
-    options['headers'] = {}
-    options['headers']['X-CSRF-Token'] = this.props.auth_token
-    axios.put(url, data, options)
-      .then(function (response) {
-        console.log(response);
-      }) 
-      .catch(function (error) {
-        console.log(error);
-      });
-  }
-
   render() {
-    console.log("The auth token was " + this.props.auth_token)
-
     return (
       <div>
         <button type='button' className={this.buttonClasses()} onClick={this.props.update_callback}>

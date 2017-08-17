@@ -30,19 +30,6 @@ export default class Admin extends React.Component {
     }
   }
   
-  old_toggleSentStatus() {
-    this.setState((prevState,props) => {
-      var cards = prevState.cards;
-      cards.forEach((card) => {
-        if (card.id == prevState.active_card.id) {
-          card.sent = !card.sent;
-        }
-      });
-      return {cards: cards}
-    });
-  } 
- 
-
   toggleSentStatus() {
     var url = "/card_templates/" + this.state.active_card.card_template_id + "/cards/" + this.state.active_card.id
     var data = {}
