@@ -28,7 +28,19 @@ export default class Admin extends React.Component {
       that.setState({ active_card: newly_active_card });
     }
   }
-    
+  
+  toggleSentStatus() {
+    this.setState((prevState,props) => {
+      var cards = prevState.cards;
+      cards.forEach((card) => {
+        if (card.id == prevState.active_card.id) {
+          card.sent = !card.sent;
+        }
+      });
+      return {cards: cards}
+    });
+  } 
+  
   render() {
     return (
       <div className="container">
@@ -44,7 +56,11 @@ export default class Admin extends React.Component {
             card = {this.state.active_card}
             greeting = "placeholder greeting"
           />
-          <CardSender card={this.state.active_card} auth_token={this.props.auth_token} />
+          <CardSender 
+            card = {this.state.active_card} 
+            update_callback = {this.toggleSentStatus.bind(this)}
+            auth_token = {this.props.auth_token} 
+          />
         </div>
       </div>
     );

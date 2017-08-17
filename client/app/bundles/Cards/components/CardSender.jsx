@@ -5,6 +5,7 @@ import axios from 'axios';
 export default class CardSender extends React.Component {
   static propTypes = {
     card: PropTypes.object.isRequired,
+    update_callback: PropTypes.func.isRequired,
     auth_token: PropTypes.string.isRequired
   }
 
@@ -30,7 +31,6 @@ export default class CardSender extends React.Component {
     var options = {}
     options['headers'] = {}
     options['headers']['X-CSRF-Token'] = this.props.auth_token
-    console.log(options)
     axios.put(url, data, options)
       .then(function (response) {
         console.log(response);
@@ -45,7 +45,7 @@ export default class CardSender extends React.Component {
 
     return (
       <div>
-        <button type='button' className={this.buttonClasses()} onClick={this.toggleSentStatus.bind(this)}>
+        <button type='button' className={this.buttonClasses()} onClick={this.props.update_callback}>
           {this.buttonText()}
         </button>
       </div>

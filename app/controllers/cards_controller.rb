@@ -25,7 +25,10 @@ class CardsController < ApplicationController
 	end
 
         def update
-          p '******************************************************************************'
-          p 'hit the update route'
+          @card = Card.find(params[:id])
+          @card.sent = !@card.sent
+          @card.save
+          p @card
+          render json: @card
         end
 end
