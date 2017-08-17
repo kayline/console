@@ -23,4 +23,12 @@ class CardsController < ApplicationController
 		@card = Card.find(params[:id])
 		@greeting = @card.card_template.greeting
 	end
+
+        def update
+          @card = Card.find(params[:id])
+          @card.sent = !@card.sent
+          @card.save
+          p @card
+          render json: @card
+        end
 end

@@ -2,11 +2,14 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import CardList from './CardList';
 import CardDetails from './CardDetails';
+import CardSender from './CardSender';
+import axios from 'axios';
 
 export default class Admin extends React.Component {
   static propTypes = {
     templates: PropTypes.array.isRequired,
-    cards: PropTypes.array.isRequired
+    cards: PropTypes.array.isRequired,
+    auth_token: PropTypes.string.isRequired
   }
 
   constructor(props) {
@@ -26,7 +29,32 @@ export default class Admin extends React.Component {
       that.setState({ active_card: newly_active_card });
     }
   }
+  
+  toggleSentStatus() {
+    var url = "/card_templates/" + this.state.active_card.card_template_id + "/cards/" + this.state.active_card.id
+    var data = {}
+    var options = {}
+    var that = this;
+    options['headers'] = {}
+    options['headers']['X-CSRF-Token'] = this.props.auth_token
+    axios.put(url, data, options)
+      .then(function (response) {
+        that.setState((prevState,props) => {
+          var cards = prevState.cards;
+          cards.forEach((card) => {
+            if (card.id == prevState.active_card.id) {
+              card.sent = !card.sent;
+            }
+          });
+          return {cards: cards}
+        }); 
+      }) 
+      .catch(function (error) {
+        console.log(error);
+      });
+  }
 
+ 
   render() {
     return (
       <div className="container">
@@ -41,6 +69,11 @@ export default class Admin extends React.Component {
           <CardDetails
             card = {this.state.active_card}
             greeting = "placeholder greeting"
+          />
+          <CardSender 
+            card = {this.state.active_card} 
+            update_callback = {this.toggleSentStatus.bind(this)}
+            auth_token = {this.props.auth_token} 
           />
         </div>
       </div>

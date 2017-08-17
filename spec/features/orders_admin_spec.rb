@@ -23,36 +23,31 @@ describe 'Orders admin', js: true do
       zip_code: '55555',
   )}
 
-  it 'displays an admin page' do
+  before(:each) do
     visit '/admin'
+  end
 
+  it 'displays an admin page' do
     expect(page).to have_content 'Admin'
   end
 
   describe 'Card list' do
 
     it 'displays a list of ordered cards' do
-      visit '/admin'
-
       expect(page).to have_css '.card-list'
     end
 
     it 'displays the ordered card ids' do
-      visit '/admin'
-
       expect(page).to have_content "#{first_card.id}"
       expect(page).to have_content "#{second_card.id}"
     end
 
     it 'starts with (only) the first card active' do
-      visit '/admin'
-
       expect(page).to have_css('.active#card-summary-' + first_card.id.to_s)
       expect(page).to_not have_css('.active#card-summary-' + second_card.id.to_s)
     end
 
     it 'makes a card active (and only that card) when clicked' do
-      visit '/admin'
       find_by_id('card-summary-' + second_card.id.to_s).click
 
       expect(page).to_not have_css('.active#card-summary-' + first_card.id.to_s)
@@ -64,8 +59,6 @@ describe 'Orders admin', js: true do
   describe 'Card Details' do
 
     it 'shows the details for the active card' do
-      visit '/admin'
-
       expect(page).to have_content "#{first_card.signature}"
       expect(page).to have_content "#{first_card.recipient_name}"
       expect(page).to have_content "#{first_card.street_address}"
@@ -75,7 +68,6 @@ describe 'Orders admin', js: true do
     end
 
     it 'changes the details if the active card changes' do
-      visit '/admin'
       find_by_id('card-summary-' + second_card.id.to_s).click
 
       expect(page).to_not have_content "#{first_card.signature}"
@@ -84,4 +76,23 @@ describe 'Orders admin', js: true do
 
   end
 
+  describe 'Card Sender' do
+
+    it 'displays a button to toggle the sent status' do
+      expect(page).to have_button('mark as sent')
+      click_button('mark as sent')
+      expect(page).to have_button('mark as NOT sent')
+      click_button('mark as NOT sent')
+      expct(page).to have_button('mark as sent')
+    end
+
+    it 'remembers the sent status' do
+      click_button('mark as sent')
+      find_by_id('card-summary-' + second_card.id.to_s).click
+      expect(page).to have_button('mark as sent')
+      find_by_id('card-summary-' + first_card.id.to_s).click
+      expect(page).to have_button('mark as NOT sent') 
+    end
+
+  end
 end
