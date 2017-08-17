@@ -83,7 +83,7 @@ describe 'Orders admin', js: true do
       click_button('mark as sent')
       expect(page).to have_button('mark as NOT sent')
       click_button('mark as NOT sent')
-      expct(page).to have_button('mark as sent')
+      expect(page).to have_button('mark as sent')
     end
 
     it 'remembers the sent status' do
