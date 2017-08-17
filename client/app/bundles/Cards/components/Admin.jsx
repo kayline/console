@@ -3,6 +3,7 @@ import React from 'react';
 import CardList from './CardList';
 import CardDetails from './CardDetails';
 import CardSender from './CardSender';
+import axios from 'axios';
 
 export default class Admin extends React.Component {
   static propTypes = {
@@ -29,7 +30,7 @@ export default class Admin extends React.Component {
     }
   }
   
-  toggleSentStatus() {
+  old_toggleSentStatus() {
     this.setState((prevState,props) => {
       var cards = prevState.cards;
       cards.forEach((card) => {
@@ -40,7 +41,33 @@ export default class Admin extends React.Component {
       return {cards: cards}
     });
   } 
-  
+ 
+
+  toggleSentStatus() {
+    var url = "/card_templates/" + this.state.active_card.card_template_id + "/cards/" + this.state.active_card.id
+    var data = {}
+    var options = {}
+    var that = this;
+    options['headers'] = {}
+    options['headers']['X-CSRF-Token'] = this.props.auth_token
+    axios.put(url, data, options)
+      .then(function (response) {
+        that.setState((prevState,props) => {
+          var cards = prevState.cards;
+          cards.forEach((card) => {
+            if (card.id == prevState.active_card.id) {
+              card.sent = !card.sent;
+            }
+          });
+          return {cards: cards}
+        }); 
+      }) 
+      .catch(function (error) {
+        console.log(error);
+      });
+  }
+
+ 
   render() {
     return (
       <div className="container">
