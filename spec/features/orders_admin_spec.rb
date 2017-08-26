@@ -23,7 +23,7 @@ describe 'Orders admin', js: true do
       zip_code: '55555',
   )}
   let!(:admin_user) {'admin'}
-  let(:admin_password) {'moop'}
+  let(:admin_password) {ENV['CONSOLE_ADMIN_PASSWORD']}
 
   def authenticate 
     if page.driver.browser.respond_to?(:authorize)
@@ -50,6 +50,7 @@ describe 'Orders admin', js: true do
   describe 'Admin Login' do
     
     it 'displays nothing but a login unless already logged in as an admin' do
+      Capybara.reset_sessions!
       expect(page).to_not have_content 'Admin'
       expect(page).to_not have_css '.card-list' 
       expect(page).to_not have_content "#{first_card.signature}"
