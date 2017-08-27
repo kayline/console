@@ -48,7 +48,12 @@ describe 'Orders admin', js: true do
   end
 
   describe 'Admin Login' do
-    
+
+    it 'has a CONSOLE_ADMIN_PASSWORD environment variable defined' do
+      expect(admin_password).to_not be(nil)
+    end   
+
+ 
     it 'displays nothing but a login unless already logged in as an admin' do
       Capybara.reset_sessions!
       expect(page).to_not have_content 'Admin'
