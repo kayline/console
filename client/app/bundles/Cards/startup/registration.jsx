@@ -9,15 +9,17 @@ import CardDetails from '../components/CardDetails';
 import CardList from '../components/CardList';
 import Admin from '../components/Admin';
 import CardSender from '../components/CardSender';
+import Checkout from '../components/Checkout';
 
 ReactOnRails.register({
-	Header,
-	PageTitle,
+  Header,
+  PageTitle,
   CardTemplate,
   CardTemplateList,
   CardForm,
   CardDetails,
   CardList,
   Admin,
-  CardSender
+  CardSender,
+  Checkout
 });
