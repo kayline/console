@@ -12,7 +12,11 @@ export default class CardForm extends React.Component {
     return (
       <div>
 
-        <Checkout />
+        <Checkout 
+	  name = 'some name'
+	  description = 'some description'
+	  amount = {3}
+	/>
 
         <form className="pll pts" action={"/card_templates/" + this.props.template.id +"/cards"} method="post">
           <input type='hidden' name='authenticity_token' value={this.props.auth_token} />
